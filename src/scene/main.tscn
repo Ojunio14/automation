@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://dooe7cr5353e6"]
+
+[ext_resource type="PackedScene" uid="uid://cnp8tvty8620k" path="res://src/scene/word/terrain.tscn" id="1_guaeg"]
+[ext_resource type="PackedScene" uid="uid://b47nekib28lp" path="res://src/scene/player/player.tscn" id="2_uqmpy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_736px"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_lafrp"]
+sky_material = SubResource("ProceduralSkyMaterial_736px")
+
+[sub_resource type="Environment" id="Environment_cu4c6"]
+background_mode = 2
+sky = SubResource("Sky_lafrp")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Main" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cu4c6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Terrain" parent="World" instance=ExtResource("1_guaeg")]
+
+[node name="Node_Main_player" type="Node3D" parent="World"]
+
+[node name="Player" parent="World/Node_Main_player" instance=ExtResource("2_uqmpy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.807533, 0)
+
+[node name="camera" type="Node3D" parent="World/Node_Main_player/Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 16, 12)
+
+[node name="control" type="Node3D" parent="World/Node_Main_player/Player/camera"]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="World/Node_Main_player/Player/camera/control"]
+projection = 1
+current = true
+size = 15.0
+far = 113.46
