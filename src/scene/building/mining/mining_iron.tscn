@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://do0fta2nw7wks"]
+
+[ext_resource type="Script" path="res://src/scene/building/mining/mining_iron.gd" id="1_ku7fe"]
+[ext_resource type="Texture2D" uid="uid://bdngq7kuqn406" path="res://assets/textures/PNG/Dark/texture_13.png" id="2_ikqib"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q3fn6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r4igg"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ro85s"]
+albedo_texture = ExtResource("2_ikqib")
+
+[node name="Mining_Iron" type="StaticBody3D"]
+script = ExtResource("1_ku7fe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_q3fn6")
+
+[node name="verific_colision_building" type="Area3D" parent="."]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="verific_colision_building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.511191, 0)
+shape = SubResource("BoxShape3D_r4igg")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+material_override = SubResource("StandardMaterial3D_ro85s")
+use_collision = true
+collision_layer = 8
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(10, 0.06, 10)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.76779, 0.959851, -2.91022)
+size = Vector3(3, 1.915, 3)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97557, 0.965674, -2.88723)
+operation = 2
+size = Vector3(3, 1.96, 2.355)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.226807, 0)
+operation = 2
+radius = 0.995
+height = 0.885
+
+[node name="criando_ferro" type="Timer" parent="."]
