@@ -43,9 +43,9 @@ transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0
 [node name="Camera3D" type="Camera3D" parent="World/Node_Main_player/Player/camera/control"]
 projection = 1
 current = true
-size = 15.0
-far = 113.46
+size = 14.0
+far = 145.06
 
-[node name="Group_Building" type="Node3D" parent="World"]
+[node name="Building" type="Node3D" parent="World" groups=["Building"]]
 
-[node name="Group_Mining" type="Node3D" parent="World/Group_Building" groups=["Mining_Iron"]]
+[node name="Group_Mining" type="Node3D" parent="World/Building" groups=["Mining_Iron"]]

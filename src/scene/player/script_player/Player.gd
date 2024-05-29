@@ -8,6 +8,13 @@ const JUMP_VELOCITY = 4.5
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
+
+
+
+
+
+
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -35,5 +42,20 @@ func _physics_process(delta: float) -> void:
 
 
 
+
+func _on_area_3d_area_shape_entered(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
+	if area.get_parent() is Mining:
+		var n = area.get_parent()
+		n.get_node("CanvasLayer").visible = true
+
+
+
+func _on_area_3d_area_shape_exited(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
+	if area != null:
+		
+		if area.get_parent() is Mining:
+			var n = area.get_parent()
+			n.get_node("CanvasLayer").visible = false
+		
 
 

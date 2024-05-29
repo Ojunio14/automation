@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://uque2r7pg7e"]
+
+[ext_resource type="Script" path="res://src/scene/npc/type_npc/npc_mining/script_mining/npc_mining.gd" id="1_88e1k"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_e7flm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8of55"]
+
+[node name="Npc_Mining" type="CharacterBody3D"]
+script = ExtResource("1_88e1k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_e7flm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_8of55")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+navigation_layers = 16

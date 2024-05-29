@@ -18,4 +18,4 @@ enum StateTerrain{
 
 var CurrentStateTerrain = StateTerrain.Play
 
-
+var visuble_gui

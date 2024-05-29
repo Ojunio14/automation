@@ -2,8 +2,8 @@ extends Control
 
 
 func _process(delta):
-	$mouse.position = get_global_mouse_position()
-
+	
+	$mouse.global_position = get_global_mouse_position()
 
 #func _on_button_button_down():
 	#GameManager.CurrentState =  GameManager.State.Buildling
@@ -11,11 +11,12 @@ func _process(delta):
 
 
 func _on_area_2d_area_entered(area):
-	BuildManeger.AbleToBuild = false
+	BuildManeger.subBuild = false
 
 
 func _on_area_2d_area_exited(area):
-	BuildManeger.AbleToBuild = true
+	BuildManeger.subBuild = true
+	
 
 func _on_button_pressed():
 	
